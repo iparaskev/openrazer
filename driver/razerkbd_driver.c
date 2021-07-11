@@ -2319,13 +2319,12 @@ static int razer_raw_event(struct hid_device *hdev, struct hid_report *report, u
                 break;
             }
 
-            data[index+1] = cur_value;
+            data[index] = cur_value;
         }
 
         asc->fn_on = !!found_fn;
 
-        data[0] = 0x01;
-        data[1] = 0x00;
+        data[0] = 0x02;
 
         // Some reason just by editing data, it generates a normal event above. (Could quite possibly work like that, no clue)
         //hid_report_raw_event(hdev, HID_INPUT_REPORT, data, size, 0);
